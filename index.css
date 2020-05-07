@@ -1,0 +1,16 @@
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.controls button {
+  margin: 10px 20px;
+}
+
+.testimonial-wrapper {
+  text-align: center;
+}
+
+.container {
+  margin-top: 100px;
+}
