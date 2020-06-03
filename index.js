@@ -1,54 +1,79 @@
 document.addEventListener("DOMContentLoaded", event => {
-  let testimonials = document.getElementsByClassName('testimonial');
-  let testimonialArray = Array.from(testimonials);
+  const itemClassName = "carousel-product";
+  let items = document.getElementsByClassName(itemClassName),
+      totalItems = items.length,
+      slide = 0,
+      moving = true;
 
-  let tempArray = Array.from(testimonials);
-  let currentTestimonial = tempArray.shift();
-  tempArray.forEach(eachTestimonial => {
-    eachTestimonial.style.display = "none";
-  });
-
-  let next = document.getElementById("next");
-  let previous = document.getElementById("previous");
-
-  let count = 0;
-
-  const goNext = () => {
-    count ++;
-    if(count == testimonialArray.length) {
-      count = 0;
-    }
-    currentTestimonial.style.display = "none";
-    currentTestimonial = testimonialArray[count];
-    currentTestimonial.style.display = "block";
-  };
-
-  const goPrevious = () => {
-    count --;
-    if (count < 0) {
-      count = testimonialArray.length - 1;
-    }
-    currentTestimonial.style.display = "none";
-    currentTestimonial = testimonialArray[count];
-    currentTestimonial.style.display = "block";
-  };
-
-  const timerInterval = 3000;
-
-  const goNextWrapper = () => {
-    clearInterval(timer);
-    goNext();
-    timer = setInterval(() => goNext(), timerInterval);
+  function setInitialClasses() {
+    items[totalItems - 1].classList.add("prev");
+    items[0].classList.add("active");
+    items[1].classList.add("next");
   }
 
-  const goPreviousWrapper = () => {
-    clearInterval(timer);
-    goPrevious();
-    timer = setInterval(() => goNext(), timerInterval);
+  function setEventListeners() {
+    const next = document.getElementById('carousel-button-next'),
+        prev = document.getElementById('carousel-button-prev');
+
+    next.addEventListener('click', moveNext);
+    prev.addEventListener('click', movePrev);
   }
 
-  let timer = setInterval(() => goNext(), timerInterval);
+  function disableInteraction() {
+    moving = true;
 
-  next.addEventListener("click", goNextWrapper);
-  previous.addEventListener("click", goPreviousWrapper);
+    setTimeout(function(){
+      moving = false
+    }, 500);
+  }
+
+  function moveCarouselTo(slide) {
+    if(!moving) {
+      disableInteraction();
+
+      var newPrevious = slide - 1,
+      newNext = slide + 1;
+
+      if(newNext === totalItems) {
+        newNext = 0;
+      }
+
+      if(newPrevious < 0) {
+        newPrevious = totalItems - 1;
+      }
+
+      items[newPrevious].className = itemClassName + " prev";
+      items[slide].className = itemClassName + " active";
+      items[newNext].className = itemClassName + " next";
+    }
+  }
+
+  function moveNext() {
+    if (!moving) {
+      slide++;
+      if(slide === totalItems) {
+        slide = 0;
+      }
+      moveCarouselTo(slide);
+    }
+  }
+
+  function movePrev() {
+    if (!moving) {
+      slide--;
+      if (slide < 0) {
+        slide = totalItems - 1;
+      }
+      moveCarouselTo(slide);
+    }
+  }
+
+  function initCarousel() {
+    setInitialClasses();
+    setEventListeners();
+
+    moving = false;
+  }
+
+  initCarousel();
 });
