@@ -1,31 +1,23 @@
  /* delete this part */
-*{
+ *{
   margin: 0;
   padding: 0;
 }
  /* delete the above part */
-
-.demo-product-container {
-  max-width: 1100px;
-  width: 90%;
-  margin: auto;
-  display: flex;
-}
-
-.concern-wrapper {
-  width: 40%;
-  height: auto;
-  margin: 3rem 1rem;
-}
 
 .concern-wrapper h3 {
   font-weight: bold;
   font-size: 2.5rem;
 }
 
+.concern-mini-text .sub-heading {
+  max-width: 280px;
+}
+
 .concern-wrapper .subtitle {
   font-size: 1.5rem;
   margin-top: 2rem;
+  width: 70%;
 }
 
 .concern-mini {
@@ -61,10 +53,10 @@
 }
 
 .carousel-product-wrapper {
+  max-width: 1100px;
+  width: 90%;
   overflow: hidden;
-  width: 60%;
   margin: auto;
-  float: right;
 }
 
 .carousel-product .price {
@@ -112,7 +104,7 @@
   margin: auto;
   z-index: 100;
   transition: transform .5s, opacity .5s, z-index .5s;
-  text-align: center;
+  display: flex;
 }
 
 .carousel-product.initial,
@@ -147,8 +139,12 @@
   z-index: 1001;
 }
 
+.product-left-part, .product-right-part  {
+  flex-basis: 50%;
+}
+
 #carousel-button-prev {
-  left:0;
+  left: 50%;
 }
 
 #carousel-button-next {
@@ -157,6 +153,7 @@
 
 #carousel-button-prev::after,
 #carousel-button-next::after {
+  cursor: pointer;
   content: " ";
   position: absolute;
   width: 45px;
@@ -174,37 +171,42 @@
 }
 
 .carousel-product img {
-  width: 400px;
+  width: 350px;
   height: auto;
+}
+
+.product-right-part {
   text-align: center;
 }
 
-@media screen and (max-width: 900px) {
-  .demo-product-container {
+@media screen and (max-width: 800px) {
+  .carousel-product {
     display: block;
   }
-  .carousel-product-wrapper {
-    width: 80%;
-    float: none;
+  #carousel-button-prev {
+    left: 0;
   }
-  .concern-wrapper {
-    width: 80%;
-    margin: auto;
-    padding: 1rem 1rem;
+  #carousel-button-prev, #carousel-button-next {
+    bottom: 20%;
+    top: auto;
   }
-
+  .product-right-part {
+    margin-top: 40px;
+  }
+  .carousel-product .text-header {
+    width: 90%;
+  }
   .concern-wrapper h3, .concern-wrapper .subtitle {
     text-align: center;
+    margin: 2rem auto 0;
   }
-
-  .carousel-product .text-header {
-    width: 80%;
+  .concern-mini-text .sub-heading {
+    max-width: 100%;
   }
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 500px) {
   .carousel-product img {
     width: 250px;
-    height: auto;
   }
 }
