@@ -4,9 +4,9 @@
   padding: 0;
 }
  /* delete the above part */
+/* ziad product carousel start */
 
 .demo-product-container {
-  max-width: 1100px;
   width: 90%;
   margin: auto;
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .concern-mini {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .concern-mini .item {
@@ -52,35 +52,57 @@
 
 .concern-mini-text .heading {
   font-weight: bold;
+  margin: 0;
 }
 
-.carousel-product .text-header {
+.subheading-concern, #subheading-product {
+  margin-top: 5px;
+}
+
+.no-slider-carousel-wrapper {
+  overflow: hidden;
+}
+
+.text-header {
   font-size: 18px;
   width: 40%;
-  margin: 0 auto;
+  margin: 0 auto 15px;
+  text-align: center;
 }
 
 .carousel-product-wrapper {
   overflow: hidden;
   width: 60%;
-  margin: auto;
+  margin: 3rem 0 0 2rem;
   float: right;
 }
 
-.carousel-product .price {
+.price-carousel-product .no-slider-item {
+  text-align: center;
+}
+
+.price-carousel-product .no-slider-item p {
+  display: inline-block;
+  text-align: center;
   margin-top: 1.5rem;
   font-size: 1.4rem;
+}
+
+.carousel-product-list #price {
   color: #387d6d;
 }
 
-.carousel-product .price span {
+.carousel-product-list #price-strike {
   text-decoration: line-through;
-  font-size: 1.4rem;
-  margin-right: 20px;
+  margin-right: 15px;
   color: #646464;
 }
 
-.carousel-product a.learn-how-btn {
+.learn-how-link .no-slider-item {
+  text-align: center;
+}
+
+a#learn-how-btn {
   background-color: #2f7d6b;
   border: none;
   color: white;
@@ -89,7 +111,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-top: 1.5rem;
+  margin-top: 10px;
   border-radius: 4px;
 }
 
@@ -97,14 +119,22 @@
   box-sizing: border-box;
 }
 
-.carousel-product-list {
+.carousel-product-list, .no-slider-carousel-list {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
 
+.no-slider-item {
+  opacity: 0;
+  position: absolute;
+  top:0;
+  width: 100%;
+  margin: auto;
+  z-index: 100;
+}
+
 .carousel-product {
-  padding-top: 2rem;
   opacity: 0;
   position: absolute;
   top:0;
@@ -116,22 +146,26 @@
 }
 
 .carousel-product.initial,
-.carousel-product.active {
+.carousel-product.active,
+.no-slider-item.initial,
+.no-slider-item.active {
   opacity: 1;
   position: relative;
   z-index: 900;
 }
 
-.carousel-product.prev,
-.carousel-product.next {
+.carousel-product.previous-product,
+.carousel-product.next-product,
+.no-slider-item.previous-product,
+.no-slider-item.next-product {
   z-index: 800;
 }
 
-.carousel-product.prev {
+.carousel-product.previous-product {
   transform: translateX(-100%);
 }
 
-.carousel-product.next {
+.carousel-product.next-product {
   transform: translateX(100%);
 }
 
@@ -161,7 +195,6 @@
   position: absolute;
   width: 45px;
   height: 45px;
-  top: 50%;
   left: 54%;
   border-right: 10px solid #387d6d;
   border-bottom: 10px solid #387d6d;
@@ -174,7 +207,7 @@
 }
 
 .carousel-product img {
-  width: 400px;
+  width: 350px;
   height: auto;
   text-align: center;
 }
@@ -186,6 +219,8 @@
   .carousel-product-wrapper {
     width: 80%;
     float: none;
+    padding: 0 !important;
+    margin: auto;
   }
   .concern-wrapper {
     width: 80%;
@@ -197,7 +232,7 @@
     text-align: center;
   }
 
-  .carousel-product .text-header {
+  .text-header {
     width: 80%;
   }
 }
@@ -207,4 +242,20 @@
     width: 250px;
     height: auto;
   }
+
+  #carousel-button-prev::after, #carousel-button-next::after {
+    width: 30px;
+	height: 30px;
+    border-right: 5px solid #387d6d;
+	border-bottom: 5px solid #387d6d;
+  }
 }
+
+@media screen and (max-width: 400px) {
+  .carousel-product img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+/* ziad product carousel end */
