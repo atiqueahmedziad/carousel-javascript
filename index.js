@@ -1,5 +1,29 @@
 // Ziad Product Carousel
 
+const content = [
+  {
+    concern: 'ACNE/WHITE & BLACKHEADS',
+    product: 'Perfec-Tone Clear & Spotless Set - Clarifying Gel, Resurfacing Creme, & Revitalazing Serum',
+    priceStrike: '$165.97',
+    price: '$141.00',
+    productLink: '#1'
+  },
+  {
+    concern: 'BLACKHEADS & ACNE/WHITE',
+    product: 'Resurfacing Creme, & Revitalazing Serum, Perfec-Tone Clear & Spotless Set - Clarifying Gel',
+    priceStrike: '$335.97',
+    price: '$232.00',
+    productLink: '#2'
+  },
+  {
+    concern: 'Lorem ipsum dolor sit ame',
+    product: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
+    priceStrike: '$535.97',
+    price: '$421.00',
+    productLink: '#3'
+  },
+];
+
 document.addEventListener("DOMContentLoaded", event => {
   const itemClassName = "carousel-product";
   let items = document.getElementsByClassName(itemClassName),
@@ -7,32 +31,19 @@ document.addEventListener("DOMContentLoaded", event => {
     slide = 0,
     moving = true;
 
-  const concernSubHeading = document.querySelectorAll('.subheading-concern .no-slider-item');
-  const concernProducts = document.querySelectorAll('.products-concern .no-slider-item');
-  const priceProduct = document.querySelectorAll('.price-carousel-product .no-slider-item');
-  const learnHow = document.querySelectorAll('.learn-how-link .no-slider-item');
-  const subHeadingClsName = 'no-slider-item';
+  let currentContent = content[slide];
+  const concernSubHeading = document.getElementById('subheading-concern');
+  const productSubHeading = document.getElementById('subheading-product');
+  const priceStrike = document.getElementById('price-strike');
+  const price = document.getElementById('price');
+  const learnMoreLink = document.getElementById('learn-how-btn');
 
   function setInitialClasses() {
-    learnHow[totalItems - 1].classList.add("previous-product");
-    learnHow[0].classList.add("initial");
-    learnHow[0].classList.add("active");
-    learnHow[1].classList.add("next-product");
-
-    priceProduct[totalItems - 1].classList.add("previous-product");
-    priceProduct[0].classList.add("initial");
-    priceProduct[0].classList.add("active");
-    priceProduct[1].classList.add("next-product");
-
-    concernProducts[totalItems - 1].classList.add("previous-product");
-    concernProducts[0].classList.add("initial");
-    concernProducts[0].classList.add("active");
-    concernProducts[1].classList.add("next-product");
-
-    concernSubHeading[totalItems - 1].classList.add("previous-product");
-    concernSubHeading[0].classList.add("initial");
-    concernSubHeading[0].classList.add("active");
-    concernSubHeading[1].classList.add("next-product");
+    concernSubHeading.textContent = currentContent.concern;
+    productSubHeading.textContent = currentContent.product;
+    priceStrike.textContent = currentContent.priceStrike;
+    price.textContent = currentContent.price;
+    learnMoreLink.href = currentContent.productLink;
 
     items[totalItems - 1].classList.add("previous-product");
     items[0].classList.add("initial");
@@ -70,21 +81,12 @@ document.addEventListener("DOMContentLoaded", event => {
         newPrevious = totalItems - 1;
       }
 
-      learnHow[newPrevious].className = subHeadingClsName + " previous-product";
-      learnHow[slide].className = subHeadingClsName + " active";
-      learnHow[newNext].className = subHeadingClsName + " next-product";
-
-      priceProduct[newPrevious].className = subHeadingClsName + " previous-product";
-      priceProduct[slide].className = subHeadingClsName + " active";
-      priceProduct[newNext].className = subHeadingClsName + " next-product";
-
-      concernProducts[newPrevious].className = subHeadingClsName + " previous-product";
-      concernProducts[slide].className = subHeadingClsName + " active";
-      concernProducts[newNext].className = subHeadingClsName + " next-product";
-
-      concernSubHeading[newPrevious].className = subHeadingClsName + " previous-product";
-      concernSubHeading[slide].className = subHeadingClsName + " active";
-      concernSubHeading[newNext].className = subHeadingClsName + " next-product";
+      currentContent = content[slide];
+      concernSubHeading.textContent = currentContent.concern;
+      productSubHeading.textContent = currentContent.product;
+      priceStrike.textContent = currentContent.priceStrike;
+      price.textContent = currentContent.price;
+      learnMoreLink.href = currentContent.productLink;
 
       items[newPrevious].className = itemClassName + " previous-product";
       items[slide].className = itemClassName + " active";
