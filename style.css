@@ -106,8 +106,8 @@
 }
 
 .single-product-slider img {
-  width: auto;
-  height: 500px;
+  width: 100vw;
+  height: 600px;
   pointer-events: none;
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
