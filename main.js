@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", event => {
     }
   });
 
-  const timerInterval = 5000;
+  const timerInterval = 3000;
 
   initCarousel();
 });
