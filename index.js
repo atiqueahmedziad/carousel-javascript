@@ -119,5 +119,51 @@ document.addEventListener("DOMContentLoaded", event => {
     moving = false;
   }
 
+  let isDown = false;
+  const slider = document.querySelector('.carousel-product-list');
+  let startX;
+  let scrollLeft;
+  const screenWidth = window.screen.width;
+  let dragValue = 350;
+
+  if(screenWidth < 950) {
+    dragValue = 180;
+  }
+  else if(screenWidth < 500) {
+    dragValue = 100;
+  }
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('super-active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('super-active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('super-active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX)*3;
+    slider.scrollLeft = scrollLeft - walk;
+    console.log(walk);
+    if(walk > dragValue) {
+      moveNext();
+    }
+    else if(walk < -dragValue) {
+      movePrev();
+    }
+  });
+
   initCarousel();
 });
