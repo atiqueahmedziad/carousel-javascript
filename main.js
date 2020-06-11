@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", event => {
     setInitialClasses();
     setEventListeners();
 
-    timer = setInterval(() => moveNext(), timerInterval);
+    //timer = setInterval(() => moveNext(), timerInterval);
     moving = false;
   }
 
@@ -144,10 +144,10 @@ document.addEventListener("DOMContentLoaded", event => {
 
   initCarousel();
 
-  const navigator = document.getElementsByClassName('product-slider-navigator')[0];
-  const navigatorWidth = navigator.clientWidth;
-  const leftWidth = "calc(50% - " + navigatorWidth/2 + "px)";
-  if(screen.width < 999) {
-    navigator.style.left = leftWidth;
-  }
+  // const navigator = document.getElementsByClassName('product-slider-navigator')[0];
+  // const navigatorWidth = navigator.clientWidth;
+  // const leftWidth = "calc(50% - " + navigatorWidth/2 + "px)";
+  // if(screen.width < 999) {
+  //   navigator.style.left = leftWidth;
+  // }
 });
