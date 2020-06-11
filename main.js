@@ -143,4 +143,11 @@ document.addEventListener("DOMContentLoaded", event => {
   const timerInterval = 3000;
 
   initCarousel();
+
+  const navigator = document.getElementsByClassName('product-slider-navigator')[0];
+  const navigatorWidth = navigator.clientWidth;
+  const leftWidth = "calc(50% - " + navigatorWidth/2 + "px)";
+  if(screen.width < 999) {
+    navigator.style.left = leftWidth;
+  }
 });
