@@ -229,7 +229,6 @@
 }
 
 @media screen and (max-width: 500px) {
-
   .single-product-slider img {
     width: 100%;
   }
@@ -243,27 +242,4 @@
   .product-mini-des-wrapper {
     width: 250px;
   }
-
-  /* .product-slider-navigator {
-    bottom: 30px;
-    margin-left: 0;
-  }
-  .product-mini-des-wrapper {
-    width: 250px;
-    left: calc(50% - 145px);
-    top: calc(100% - 20px);
-  }
-
-  .on-sale-tag p {
-    font-size: 14px;
-  }
-
-  .product-title {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
-  .short-description {
-    font-size: 14px;
-  } */
 }
